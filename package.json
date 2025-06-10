@@ -1,0 +1,23 @@
+{
+  "name": "cypress-ci-cd",
+  "version": "1.0.0",
+  "main": "cypress.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alves-Andre/AutomationTest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alves-Andre/AutomationTest/issues"
+  },
+  "homepage": "https://github.com/Alves-Andre/AutomationTest#readme",
+  "description": "",
+  "devDependencies": {
+    "cypress": "^14.4.1"
+  }
+}
