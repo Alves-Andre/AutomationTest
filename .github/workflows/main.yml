@@ -7,6 +7,10 @@ jobs:
     steps:
         - name: Checkout
           uses: actions/checkout@v4
+        - name: Instala o Google Chrome
+          run: |
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
         - name: Cypress.io rodando testes chrome
           uses: cypress-io/github-action@v6
           with:
