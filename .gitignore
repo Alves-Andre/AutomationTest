@@ -1,0 +1,4 @@
+# Ignore files and directories that should not be tracked by Git
+# Node.js dependencies
+Cypress.env.json
+node_modules/*
