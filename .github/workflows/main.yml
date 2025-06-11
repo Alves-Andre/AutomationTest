@@ -1,36 +1,41 @@
 name: Testes Cypress
-on: push
+
+on: 
+  push:
+    branches: 
+      - main
 
 jobs:
-  cypress-run-chrome:
+  cypress-run-docker:
     runs-on: ubuntu-latest
+    container:
+      image: cypress/browsers:node18.12.0-chrome107-ff106
+      options: --user 1001  # evita problemas de permissão com arquivos gerados
     steps:
-        - name: Checkout
-          uses: actions/checkout@v4
-        - name: Instala o Google Chrome
-          run: |
-            sudo apt-get update
-            sudo apt-get install -y google-chrome-stable
-        - name: Cypress.io rodando testes chrome
-          uses: cypress-io/github-action@v6
-          with:
-            command: npx cypress run --browser chrome
-#========================================================
-        - name: Prints de execução de testes
-          uses: actions/upload-artifact@v4
-          if: always()
-          with:
-              name: cypress-screenshots-chrome
-              path: cypress/screenshots
-              retention-days: 1
-#========================================================
-        - name: Videos da execução de testes
-          uses: actions/upload-artifact@v4
-          if: always()
-          with:
-            name: cypress-videos-chrome
-            path: cypress/videos
-            retention-days: 1
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Instalar dependências
+        run: "npm ci"
+
+      - name: Executar testes Cypress com Chrome em container Docker
+        run: "npx cypress run --browser chrome"
+
+      - name: Prints da execução dos testes
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+          retention-days: 1
+
+      - name: Vídeos da execução dos testes
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos
+          retention-days: 1
 
 #Na linha 2 informa que é para rodar esse script a cada "push" na main/master
 #Na linha 4 informa quais os jobs ou trabalhos que será executado ao rodar o script
