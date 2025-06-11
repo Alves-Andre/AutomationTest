@@ -45,7 +45,7 @@ São executados os seguintes cenários:
 
 1. Clone o repositório:
 
-"git clone https://github.com/SEU_USUARIO/AutomationTest.git"  
+"git clone https://github.com/Alves-Andre/AutomationTest.git"  
 "cd AutomationTest"
 
 2. Instale as dependências:
